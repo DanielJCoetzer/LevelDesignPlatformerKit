@@ -1,0 +1,309 @@
+[gd_scene load_steps=16 format=3 uid="uid://d3h3qkgh0nmsn"]
+
+[ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_d04ea"]
+[ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_p1bkw"]
+[ext_resource type="Script" path="res://scripts/view.gd" id="3_25q2n"]
+[ext_resource type="PackedScene" uid="uid://o03cclkqfdvo" path="res://models/props/door-large-open.glb" id="5_jbdrt"]
+[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="16_g08u8"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="22_vjh0a"]
+[ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="23_twa7s"]
+[ext_resource type="LabelSettings" uid="uid://daohhjonjrdx8" path="res://themes/label_settings.tres" id="24_d6f7o"]
+[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="25_ajfjl"]
+[ext_resource type="Theme" uid="uid://d3avl0mr4r87l" path="res://themes/default_theme.tres" id="26_exsgh"]
+[ext_resource type="Texture2D" uid="uid://dm50aa4qogm65" path="res://sprites/button_rectangle_depth_gloss.png" id="27_y4rh5"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u8ojw"]
+auto_exposure_scale = 0.75
+dof_blur_far_distance = 0.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_ri8jt"]
+font = ExtResource("25_ajfjl")
+font_size = 128
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x4d2s"]
+font = ExtResource("25_ajfjl")
+font_size = 32
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6r7m"]
+font = ExtResource("25_ajfjl")
+font_size = 42
+shadow_color = Color(0, 0, 0, 0.376471)
+shadow_offset = Vector2(2, 2)
+
+[node name="Main" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
+environment = ExtResource("1_d04ea")
+camera_attributes = SubResource("CameraAttributesPractical_u8ojw")
+
+[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_p1bkw")]
+view = NodePath("../View")
+
+[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target") groups=["View"]]
+process_mode = 3
+transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
+script = ExtResource("3_25q2n")
+target = NodePath("../Player")
+zoom_minimum = 5
+zoom_maximum = 5
+default_zoom = 5
+
+[node name="Camera" type="Camera3D" parent="View"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+current = true
+fov = 40.0
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="platform" parent="World" instance=ExtResource("16_g08u8")]
+
+[node name="platform2" parent="World" instance=ExtResource("16_g08u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.1487)
+
+[node name="platform3" parent="World" instance=ExtResource("16_g08u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.75061)
+
+[node name="platform4" parent="World" instance=ExtResource("16_g08u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.7601)
+
+[node name="platform5" parent="World" instance=ExtResource("16_g08u8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23.2428)
+
+[node name="door-large-open2" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(17.9547, 0, 0, 0, 13.9648, 0, 0, 0, 87.359, -0.110401, -1.30217, 11.5852)
+
+[node name="door-large-open3" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-17.9547, -2.10862e-06, 0, 2.71108e-06, -13.9648, 0, 0, 0, 87.359, -0.110401, -1.30217, 11.5852)
+
+[node name="door-large-open4" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(12.7279, 0, -5.86515, 0, 14, 0, 12.7279, 0, 5.86515, -2.22005, -1.30217, 28.5517)
+
+[node name="door-large-open5" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-12.7279, -1.49478e-06, -5.86515, 2.71792e-06, -14, 0, -12.7279, -1.49478e-06, 5.86515, -2.22005, -1.30217, 28.5517)
+
+[node name="door-large-open6" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-7.86805e-07, 0, -8.29458, 0, 14, 0, 18, 0, -3.62568e-07, -7.31054, -1.30217, 30.6531)
+
+[node name="door-large-open7" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(7.86805e-07, 9.24033e-14, -8.29458, 2.71792e-06, -14, 3.38813e-21, -18, -2.11394e-06, -3.62568e-07, -7.31054, -1.30217, 30.6531)
+
+[node name="door-large-open18" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-7.86805e-07, 0, -115.415, 0, 14, 0, 18, 0, -5.04496e-06, -56.882, -1.28139, 38.2364)
+
+[node name="door-large-open19" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(7.86805e-07, 9.24033e-14, -115.415, 2.71792e-06, -14, 4.71443e-20, -18, -2.11394e-06, -5.04496e-06, -56.882, -1.28139, 38.2364)
+
+[node name="door-large-open20" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-7.86805e-07, 0, -8.29458, 0, 14, 0, 18, 0, -3.62568e-07, -40.744, -1.30217, 23.095)
+
+[node name="door-large-open21" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(7.86805e-07, 9.24033e-14, -8.29458, 2.71792e-06, -14, 3.38813e-21, -18, -2.11394e-06, -3.62568e-07, -40.744, -1.30217, 23.095)
+
+[node name="door-large-open22" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-12.7279, 0, -5.86515, 0, 14, 0, 12.7279, 0, -5.86515, -78.9212, -1.30217, 35.8051)
+
+[node name="door-large-open23" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(12.7279, 1.49478e-06, -5.86515, 2.71792e-06, -14, 6.77626e-21, -12.7279, -1.49478e-06, -5.86515, -78.9212, -1.30217, 35.8051)
+
+[node name="door-large-open24" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-18, 0, 7.25135e-07, 0, 14, 0, -1.57361e-06, 0, -8.29458, -81.3788, -1.30217, 29.8415)
+
+[node name="door-large-open25" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(18, 2.11394e-06, 7.25135e-07, 2.71792e-06, -14, 6.77626e-21, 1.57361e-06, 1.84807e-13, -8.29458, -81.3788, -1.30217, 29.8415)
+
+[node name="door-large-open28" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-12.7279, 0, -5.86515, 0, 14, 0, 12.7279, 0, -5.86515, -46.6224, -1.30217, 20.7245)
+
+[node name="door-large-open29" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(12.7279, 1.49478e-06, -5.86515, 2.71792e-06, -14, 6.77626e-21, -12.7279, -1.49478e-06, -5.86515, -46.6224, -1.30217, 20.7245)
+
+[node name="door-large-open30" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-18, 0, 7.25135e-07, 0, 14, 0, -1.57361e-06, 0, -8.29458, -49.0799, -1.30217, 14.7608)
+
+[node name="door-large-open31" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(18, 2.11394e-06, 7.25135e-07, 2.71792e-06, -14, 6.77626e-21, 1.57361e-06, 1.84807e-13, -8.29458, -49.0799, -1.30217, 14.7608)
+
+[node name="door-large-open34" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(0.347439, 0, 8.29303, 0, 14, 0, -17.9966, 0, 0.160103, -57.2574, -1.30217, -27.4245)
+
+[node name="door-large-open35" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-0.347439, -4.08036e-08, 8.29303, 2.71792e-06, -14, -4.60408e-16, 17.9966, 2.11355e-06, 0.160103, -57.2574, -1.30217, -27.4245)
+
+[node name="door-large-open36" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(12.9712, 0, 5.75085, 0, 14, 0, -12.4799, 0, 5.97727, -51.4259, -1.30217, -24.941)
+
+[node name="door-large-open37" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-12.9712, -1.52336e-06, 5.75085, 2.71792e-06, -14, 8.29011e-14, 12.4799, 1.46565e-06, 5.97727, -51.4259, -1.30217, -24.941)
+
+[node name="door-large-open38" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(17.9966, 0, -0.160104, 0, 14, 0, 0.347441, 0, 8.29303, -49.0839, -1.30217, -18.931)
+
+[node name="door-large-open39" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-17.9966, -2.11355e-06, -0.160104, 2.71792e-06, -14, -1.99615e-21, -0.347441, -4.08039e-08, 8.29303, -49.0839, -1.30217, -18.931)
+
+[node name="door-large-open32" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-18, 0, 9.61811e-06, 0, 14, 0, -1.57361e-06, 0, -110.018, -49.0799, -1.30217, -1.98516)
+
+[node name="door-large-open33" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(18, 2.11394e-06, 9.61811e-06, 2.71792e-06, -14, 8.98796e-20, 1.57361e-06, 1.84807e-13, -110.018, -49.0799, -1.30217, -1.98516)
+
+[node name="door-large-open26" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-18, 0, 1.30556e-05, 0, 14, 0, -1.57361e-06, 0, -149.338, -81.3788, -1.30217, 6.78534)
+
+[node name="door-large-open27" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(18, 2.11394e-06, 1.30556e-05, 2.71792e-06, -14, 1.22002e-19, 1.57361e-06, 1.84807e-13, -149.338, -81.3788, -1.30217, 6.78534)
+
+[node name="door-large-open8" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-7.86805e-07, 0, -8.29458, 0, 14, 0, 18, 0, -3.62568e-07, -8.9394, -1.30217, 30.6531)
+
+[node name="door-large-open9" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(7.86805e-07, 9.24033e-14, -8.29458, 2.71792e-06, -14, 3.38813e-21, -18, -2.11394e-06, -3.62568e-07, -8.9394, -1.30217, 30.6531)
+
+[node name="door-large-open10" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-7.86805e-07, 0, -8.29458, 0, 14, 0, 18, 0, -3.62568e-07, -10.3918, -1.30217, 30.6531)
+
+[node name="door-large-open11" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(7.86805e-07, 9.24033e-14, -8.29458, 2.71792e-06, -14, -9.03427e-22, -18, -2.11394e-06, -3.62568e-07, -10.3918, -1.30217, 30.6531)
+
+[node name="door-large-open12" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-9.94111e-07, 0, -8.29458, 0, 14, 0, 22.7426, 0, -3.62568e-07, -11.8394, -1.30217, 30.6531)
+
+[node name="door-large-open13" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(9.94111e-07, 9.24033e-14, -8.29458, 3.43404e-06, -14, -9.03427e-22, -22.7426, -2.11394e-06, -3.62568e-07, -11.8394, -1.30217, 30.6531)
+
+[node name="door-large-open14" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-1.27315e-06, 0, -8.29458, 0, 14, 0, 29.1263, 0, -3.62568e-07, -13.2866, -1.30217, 30.6531)
+
+[node name="door-large-open15" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(1.27315e-06, 9.24033e-14, -8.29458, 4.39795e-06, -14, -9.03427e-22, -29.1263, -2.11394e-06, -3.62568e-07, -13.2866, -1.30217, 30.6531)
+
+[node name="door-large-open16" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(-1.89482e-06, 0, -113.011, 0, 12.8087, 0, 43.3484, 0, -4.93987e-06, -24.3425, -1.30217, 30.6531)
+
+[node name="door-large-open17" parent="World" instance=ExtResource("5_jbdrt")]
+transform = Transform3D(1.89481e-06, 8.45401e-14, -113.011, 6.54541e-06, -12.8087, -1.23089e-20, -43.3483, -1.93405e-06, -4.93987e-06, -24.3425, -1.30217, 30.6531)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+shadow_enabled = true
+shadow_opacity = 0.75
+
+[node name="HUD" type="CanvasLayer" parent="." groups=["HUD"]]
+process_mode = 3
+script = ExtResource("22_vjh0a")
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 67.0
+offset_right = 313.0
+offset_bottom = 323.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("23_twa7s")
+
+[node name="x" type="Label" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 123.0
+text = "×"
+label_settings = ExtResource("24_d6f7o")
+
+[node name="Level Complete" type="Label" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -429.0
+offset_top = 139.0
+offset_right = 429.0
+offset_bottom = 287.0
+grow_horizontal = 2
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_ri8jt")
+
+[node name="CoinsLabel" type="Label" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 144.0
+offset_top = 64.0
+offset_right = 368.0
+offset_bottom = 123.0
+text = "0"
+label_settings = ExtResource("24_d6f7o")
+
+[node name="PlayAgainButton" type="Button" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -196.0
+offset_top = -258.0
+offset_right = 196.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+theme = ExtResource("26_exsgh")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("25_ajfjl")
+theme_override_font_sizes/font_size = 60
+text = "Play Again?"
+icon = ExtResource("27_y4rh5")
+flat = true
+icon_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.5
+offset_top = 59.0
+offset_right = 48.5
+offset_bottom = 115.0
+grow_horizontal = 2
+text = "00"
+label_settings = SubResource("LabelSettings_x4d2s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeNameLabel" type="Label" parent="HUD/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -49.0
+offset_top = 22.0
+offset_right = 49.0
+offset_bottom = 78.0
+grow_horizontal = 2
+text = "TIME"
+label_settings = SubResource("LabelSettings_v6r7m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
+[connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
+[connection signal="pressed" from="HUD/Control/PlayAgainButton" to="HUD" method="_on_play_again_button_pressed"]

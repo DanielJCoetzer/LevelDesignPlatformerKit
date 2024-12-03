@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmmmprr5yq37v"]
+
+[ext_resource type="PackedScene" uid="uid://ddyao5skytgvu" path="res://models/prototyping/models/floor-thick.glb" id="1_v2wfb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxxf5"]
+size = Vector3(1, 0.199997, 1)
+
+[node name="floor-thick2" instance=ExtResource("1_v2wfb")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0996933, 0)
+shape = SubResource("BoxShape3D_wxxf5")

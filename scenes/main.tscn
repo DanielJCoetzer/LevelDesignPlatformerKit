@@ -83,7 +83,6 @@ target = NodePath("../Player")
 [node name="Camera" type="Camera3D" parent="View"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 current = true
-fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
 
