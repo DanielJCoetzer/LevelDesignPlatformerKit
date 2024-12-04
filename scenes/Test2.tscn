@@ -1,11 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://8oj7imsgo8m8"]
+[gd_scene load_steps=39 format=3 uid="uid://8oj7imsgo8m8"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_hlur1"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_c6rg2"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_ivu2a"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="4_71jng"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="6_rn0hi"]
-[ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="7_3hryj"]
+[ext_resource type="Texture2D" uid="uid://vm26lswwdfuw" path="res://models/props/key.png" id="7_seote"]
 [ext_resource type="LabelSettings" uid="uid://daohhjonjrdx8" path="res://themes/label_settings.tres" id="8_5h8mt"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="9_n722p"]
 [ext_resource type="Theme" uid="uid://d3avl0mr4r87l" path="res://themes/default_theme.tres" id="10_i02sm"]
@@ -27,6 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://mjfom53x6yfb" path="res://models/props/block-grass-overhang-corner.glb" id="26_ijgui"]
 [ext_resource type="PackedScene" uid="uid://bojdspbst38j8" path="res://models/prototyping/models/wall-round.glb" id="26_nunkh"]
 [ext_resource type="PackedScene" uid="uid://co08nvwnlkl2d" path="res://GrassBlock.tscn" id="27_r0haq"]
+[ext_resource type="PackedScene" uid="uid://dhxok27jxvik8" path="res://objects/flag.tscn" id="28_rw084"]
+[ext_resource type="PackedScene" uid="uid://6n42nnf84i57" path="res://models/props/key.glb" id="29_e5uda"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_u8ojw"]
 auto_exposure_scale = 0.75
@@ -221,7 +223,7 @@ offset_top = 67.0
 offset_right = 313.0
 offset_bottom = 323.0
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("7_3hryj")
+texture = ExtResource("7_seote")
 
 [node name="x" type="Label" parent="HUD/Control"]
 layout_mode = 0
@@ -535,6 +537,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 33)
 [node name="door-large-open2" parent="." instance=ExtResource("21_ttlnb")]
 transform = Transform3D(22.4496, 0, 0, 0, -5.74635e-07, 74.172, 0, -13.1461, -3.24216e-06, -0.294798, 3.41661, -7.25)
 
+[node name="door-large-open3" parent="." instance=ExtResource("21_ttlnb")]
+transform = Transform3D(-9.81303e-07, -13.1461, -3.24216e-06, 0, -5.74634e-07, 74.172, -22.4496, 5.74634e-07, 1.41719e-13, -54.0599, 3.41661, -18.1151)
+
 [node name="door" parent="." instance=ExtResource("22_5papv")]
 transform = Transform3D(3.56544, 0, 0, 0, 3.56544, 0, 0, 0, 3.56544, -0.0228272, 0, -3)
 open_door_with_coins = 2
@@ -559,11 +564,11 @@ transform = Transform3D(-7.13088, 0, -7.20753e-07, 0, 15.2179, 0, 6.23401e-07, 0
 transform = Transform3D(7.13087, -3.23734e-10, -0.00645018, 2.43708e-15, -8.48428, 1.29245e-06, -0.00311118, -7.4172e-07, -14.7839, -31.9942, 18.0857, 28.4376)
 
 [node name="door3" parent="." instance=ExtResource("22_5papv")]
-transform = Transform3D(-1.80188e-07, 0, -3.56544, 0, 6.39517, 0, 4.12222, 0, -1.5585e-07, -53.3159, -5.53982, -18.3027)
+transform = Transform3D(-1.80188e-07, 0, -3.56544, 0, 5.23186, 0, 4.12222, 0, -1.5585e-07, -53.3159, -2.42556, -18.3027)
 open_door_with_coins = 6
 
 [node name="wall-doorway-round5" parent="." instance=ExtResource("12_msxag")]
-transform = Transform3D(-7.13088, 0, -7.20753e-07, 0, 15.2179, 0, 6.23401e-07, 0, -8.24445, -53.3159, -5.53982, -18.3439)
+transform = Transform3D(-7.13088, 0, -7.20753e-07, 0, 12.4497, 0, 6.23401e-07, 0, -8.24445, -53.3159, -2.42556, -18.3439)
 
 [node name="wall5" parent="." instance=ExtResource("23_u4e58")]
 transform = Transform3D(7.13087, -3.23734e-10, -0.00645018, 2.43708e-15, -8.48428, 1.29245e-06, -0.00311118, -7.4172e-07, -14.7839, -53.5038, 18.0857, -18.3584)
@@ -585,9 +590,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, -1, 28.5)
 
 [node name="block-grass-overhang-corner2" parent="." instance=ExtResource("26_ijgui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.714942, -7.709)
-
-[node name="block-grass-overhang-corner4" parent="." instance=ExtResource("26_ijgui")]
-transform = Transform3D(1, 0, 0, 0, 0.561392, 0, 0, 0, 1, 3, 0.01, 24)
 
 [node name="moving_object_path6" parent="." node_paths=PackedStringArray("object_to_move") instance=ExtResource("14_n1cly")]
 curve = SubResource("Curve3D_prxsb")
@@ -650,7 +652,10 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -40, -3.96847, -14.0426)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.8471, -3.96847, -14.0426)
 
 [node name="block-grass-large26" parent="." instance=ExtResource("27_r0haq")]
-transform = Transform3D(8.26544, 0, 0, 0, 1.99376, 0, 0, 0, 7.2148, -44.5595, -3.96847, -18.5362)
+transform = Transform3D(18.9053, 0, 0, 0, 1.99376, 0, 0, 0, 7.2148, -50.7676, -3.96847, -18.5362)
+
+[node name="block-grass-large27" parent="." instance=ExtResource("27_r0haq")]
+transform = Transform3D(9.94996, 0, 0, 0, 1.99376, 0, 0, 0, 8.2151, 1.10437, -1.76289, -10.5099)
 
 [node name="block-grass-large21" parent="." instance=ExtResource("27_r0haq")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -37.2858, -3.96847, -14.0426)
@@ -672,6 +677,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40, 3.041, 7.26317)
 
 [node name="coin6" parent="." instance=ExtResource("18_uxnlc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8999, 3.11119, -19.9306)
+
+[node name="flag" parent="." instance=ExtResource("28_rw084")]
+transform = Transform3D(2.82819, 0, 0, 0, 2.82819, 0, 0, 0, 2.82819, -58.8975, -1.97471, -17.9172)
+
+[node name="key2" parent="." instance=ExtResource("29_e5uda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.797194, 0.23087, -8.67734)
 
 [connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]
 [connection signal="reached_goal" from="Player" to="HUD" method="_on_player_reached_goal"]
