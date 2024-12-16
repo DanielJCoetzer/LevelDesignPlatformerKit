@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=4 uid="uid://cbl2tr41a3sqi"]
+
+[ext_resource type="PackedScene" uid="uid://bcelcc2hak4kr" path="res://models/prototyping/models/column-low.glb" id="1_flgs8"]
+[ext_resource type="Texture2D" uid="uid://bvj25ii6y01ic" path="res://models/prototyping/models/Textures/colormap.png" id="2_2b6pk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ogo3"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_2b6pk")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2rssa"]
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.1, 0.2, 0.5, 0.2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABQAEAAEAAQAAAAUABgAEAAUABQAHAAYAAgADAAYABgAHAAIABgADAAEAAQAEAAYABQAAAAIAAgAHAAUA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAAAAAAAAAAAA//8AAAAAAAAAAP//AAAAAP////8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_n7kly"]
+resource_name = "column-low_column-low"
+_surfaces = [{
+"aabb": AABB(-0.1, 0, -0.1, 0.2, 0.5, 0.2),
+"attribute_data": PackedByteArray("/3dlxv93mPn/d2XG/3eY+f93mPn/d5j5/3dlxv93Zcb/d5j5/3dlxv93mPn/d2XG/3eY+f93mPn/d2XG/3dlxv93mPn/d5j5/3eY+f93mPn/d2XG/3dlxv93Zcb/d2XG"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoADgAMAA0ADQAPAA4AEgAQABEAEQATABIAFgAUABUAFQAXABYA"),
+"material": SubResource("StandardMaterial3D_3ogo3"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAA/7///wAAAAD/v/////////+///8AAP///78AAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAP+/AAD//wAA/78AAAAA////vwAA//////+///8AAP//AIAAAAAA//8AgP///////wCAAAD/////AID//wAA////v///AAAAAP+/AAAAAP///78AAAAAAAD/v/////8AAP////////////8AAP//AAD//wAA/////////38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2rssa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hruw8"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.108593, 0.000631824, 0.192753, 1)
+emission_energy_multiplier = 0.41
+
+[node name="column-low2" instance=ExtResource("1_flgs8")]
+
+[node name="column-low" parent="." index="0"]
+mesh = SubResource("ArrayMesh_n7kly")
+surface_material_override/0 = SubResource("StandardMaterial3D_hruw8")
